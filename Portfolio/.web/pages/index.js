@@ -3,9 +3,9 @@ import { useRouter } from "next/router"
 import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
 import { ColorModeContext, EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
 import "focus-visible/dist/focus-visible"
-import { Box, HStack, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Text, VStack } from "@chakra-ui/react"
+import { Box, Button, Heading, HStack, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Spacer, Text, VStack } from "@chakra-ui/react"
 import { getEventURL } from "/utils/state.js"
-import { EmailIcon } from "@chakra-ui/icons"
+import { EmailIcon, MoonIcon, SunIcon } from "@chakra-ui/icons"
 import NextHead from "next/head"
 
 
@@ -63,7 +63,7 @@ export default function Component() {
   <Fragment/>
 )}
 </Fragment>
-  <VStack>
+  <VStack sx={{"_light": {"background": "radial-gradient(circle, rgba(0,0,0,0.35) 1px, transparent 1px)", "backgroundSize": "25px 25px"}, "background": "radial-gradient(circle, rgba(255,255,255,0.09) 1px, transparent 1px)", "backgroundSize": "25px 25px"}}>
   <HStack>
   <HStack alignItems={`center`} justifyContent={`center`}>
   <Box>
@@ -75,7 +75,32 @@ export default function Component() {
 </Text>
 </Box>
 </HStack>
+  <Spacer/>
+  <Button colorScheme={`none`} onClick={toggleColorMode} sx={{"_light": {"color": "black"}, "_dark": {"color": "white"}}}>
+  <Fragment>
+  {isTrue((colorMode === "light")) ? (
+  <Fragment>
+  <SunIcon/>
+</Fragment>
+) : (
+  <Fragment>
+  <MoonIcon/>
+</Fragment>
+)}
+</Fragment>
+</Button>
 </HStack>
+  <Box sx={{"width": "100%"}}>
+  <Box sx={{"display": ["none", "block", "block", "block"]}}>
+  <VStack sx={{"width": "100%", "height": "84vh", "padding": "15rem 0rem", "alignItems": "center", "justifyContent": "start"}}>
+  <HStack>
+  <Heading sx={{"fontSize": ["2rem", "2.85rem", "4rem", "5rem", "5rem"], "fontWeight": "900", "_dark": {"background": "linear-gradient(to right, #e1e1e1, #757575)", "backgroundClip": "text"}}}>
+  {`Hi there! I'm Owen the former farmer`}
+</Heading>
+</HStack>
+</VStack>
+</Box>
+</Box>
 </VStack>
   <NextHead>
   <title>
