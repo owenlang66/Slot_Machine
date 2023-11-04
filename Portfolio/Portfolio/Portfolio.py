@@ -7,11 +7,6 @@ import reflex as rx
 class State(rx.State):
     """The app state."""
 
-    dark_mode: bool = False
-
-    def toggle_dark_mode(self):
-        self.dark_mode = not self.dark_mode
-
     pass
 
 dots: dict = {
@@ -137,10 +132,10 @@ class Main:
     def create_breadcrumb_item(self, path: str, title: str, url: str | None):
         return rx.breadcrumb_item(
             rx.hstack(
-                rx.image(src=path, html_width="24pxx", html_height="24px", _dark={"filter": "brightness(0) invert(1)"} if rx.dark_mode() else {},),
+                rx.image(src=path, html_width="24pxx", html_height="24px", _dark={"filter": "brightness(0) invert(1)"}),
                 rx.breadcrumb_link(
                     title, href=url, 
-                    _dark={"color": "rgba(255,255,255,0.7)"} if rx.dark_mode() else {},
+                    _dark={"color": "rgba(255,255,255,0.7)"}
                 ),
             )
         )
