@@ -65,9 +65,14 @@ export default function Component() {
 </Fragment>
   <VStack>
   <HStack>
-  <HStack>
+  <HStack alignItems={`center`} justifyContent={`center`}>
   <Box>
   <EmailIcon sx={{"_dark": {"color": "rgba(255,255,255,0.5)"}}}/>
+</Box>
+  <Box>
+  <Text sx={{"_dark": {"color": "rgba(255,255,255,0.5)"}}}>
+  {`owenlang66@gmail.com`}
+</Text>
 </Box>
 </HStack>
 </HStack>
