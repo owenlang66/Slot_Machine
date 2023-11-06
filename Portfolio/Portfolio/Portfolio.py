@@ -155,8 +155,6 @@ class Main:
                 ]
         )
 
-
-
     def compile_desktop_component(self) -> Component:
         return rx.tablet_and_desktop(
             rx.vstack(
