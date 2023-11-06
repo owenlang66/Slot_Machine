@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
 import { ColorModeContext, EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
 import "focus-visible/dist/focus-visible"
-import { Badge, Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Heading, HStack, Image, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Spacer, Text, VStack } from "@chakra-ui/react"
+import { Badge, Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Heading, HStack, Image, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Spacer, Stack, Text, VStack } from "@chakra-ui/react"
 import { getEventURL } from "/utils/state.js"
 import { EmailIcon, MoonIcon, SunIcon } from "@chakra-ui/icons"
 import NextLink from "next/link"
@@ -64,9 +64,9 @@ export default function Component() {
   <Fragment/>
 )}
 </Fragment>
-  <VStack sx={{"@keyframes dots": {"0%": {"backgroundPosition": "0 0"}, "100%": {"backgroundPosition": "40px 40px"}}, "animation": "dots 4s linear infinite alternate-reverse both", "_light": {"background": "radial-gradient(circle, rgba(0,0,0,0.35) 1px, transparent 1px)", "backgroundSize": "25px 25px"}, "background": "radial-gradient(circle, rgba(255,255,255,0.09) 1px, transparent 1px)", "backgroundSize": "25px 25px"}}>
+  <Stack sx={{"@keyframes dots": {"0%": {"backgroundPosition": "0 0"}, "100%": {"backgroundPosition": "40px 40px"}}, "animation": "dots 4s linear infinite alternate-reverse both", "_light": {"background": "radial-gradient(circle, rgba(0,0,0,0.35) 1px, transparent 1px)", "backgroundSize": "25px 25px"}, "background": "radial-gradient(circle, rgba(255,255,255,0.09) 1px, transparent 1px)", "backgroundSize": "25px 25px"}}>
   <HStack>
-  <HStack alignItems={`center`} justifyContent={`space-between`}>
+  <HStack alignItems={`center`} justifyContent={`center`}>
   <Box>
   <EmailIcon sx={{"_dark": {"color": "rgba(255,255,255,0.5)"}}}/>
 </Box>
@@ -91,10 +91,10 @@ export default function Component() {
 </Fragment>
 </Button>
 </HStack>
-  <Box sx={{"width": "100%"}}>
+  <Box sx={{"width": "100%", "height": "40vh"}}>
   <Box sx={{"display": ["none", "block", "block", "block"]}}>
   <VStack sx={{"width": "100%", "height": "84vh", "padding": "15rem 0rem", "alignItems": "center", "justifyContent": "start"}}>
-  <VStack alignItems={`center`} justifyContent={`center`} spacing={`1.75rem`}>
+  <VStack alignItems={`center`} justifyContent={`center`} spacing={`1rem`}>
   <Heading sx={{"fontSize": ["2rem", "2.85rem", "4rem", "5rem", "5rem"], "fontWeight": "900", "_dark": {"background": "linear-gradient(to right, #e1e1e1, #757575)", "backgroundClip": "text"}}}>
   {`Hi there! I'm Owen the former farmer`}
 </Heading>
@@ -111,6 +111,9 @@ export default function Component() {
 </Badge>
   <Badge sx={{"padding": ["0.15rem 0.35rem", "0.15rem 0.35rem", "0.15rem 1rem", "0.15rem 1rem", "0.15rem 1rem"]}} variant={`solid`}>
   {`Full Stack Developer`}
+</Badge>
+  <Badge sx={{"padding": ["0.15rem 0.35rem", "0.15rem 0.35rem", "0.15rem 1rem", "0.15rem 1rem", "0.15rem 1rem"]}} variant={`solid`}>
+  {`Former Farmer`}
 </Badge>
 </HStack>
   <Breadcrumb>
@@ -135,7 +138,7 @@ export default function Component() {
 </Box>
   <Box sx={{"display": ["block", "none", "none", "none"]}}>
   <VStack sx={{"width": "100%", "height": "84vh", "padding": "15rem 0rem", "alignItems": "center", "justifyContent": "start"}}>
-  <VStack alignItems={`center`} justifyContent={`center`} spacing={`1.75rem`}>
+  <VStack alignItems={`center`} justifyContent={`center`} spacing={`1rem`}>
   <Heading sx={{"fontSize": ["2rem", "2.85rem", "4rem", "5rem", "5rem"], "fontWeight": "900", "_dark": {"background": "linear-gradient(to right, #e1e1e1, #757575)", "backgroundClip": "text"}}}>
   {`Hi there! I'm Owen the former farmer`}
 </Heading>
@@ -143,7 +146,7 @@ export default function Component() {
   {`🍃`}
 </Heading>
 </VStack>
-  <VStack spacing={`1.25rem`}>
+  <VStack spacing={`3rem`}>
   <Badge sx={{"padding": ["0.15rem 0.35rem", "0.15rem 0.35rem", "0.15rem 1rem", "0.15rem 1rem", "0.15rem 1rem"]}} variant={`solid`}>
   {`Software Engineer`}
 </Badge>
@@ -152,6 +155,9 @@ export default function Component() {
 </Badge>
   <Badge sx={{"padding": ["0.15rem 0.35rem", "0.15rem 0.35rem", "0.15rem 1rem", "0.15rem 1rem", "0.15rem 1rem"]}} variant={`solid`}>
   {`Full Stack Developer`}
+</Badge>
+  <Badge sx={{"padding": ["0.15rem 0.35rem", "0.15rem 0.35rem", "0.15rem 1rem", "0.15rem 1rem", "0.15rem 1rem"]}} variant={`solid`}>
+  {`Former Farmer`}
 </Badge>
 </VStack>
   <Breadcrumb>
@@ -175,7 +181,19 @@ export default function Component() {
 </VStack>
 </Box>
 </Box>
+  <Box sx={{"width": "100%", "height": "40vh"}}/>
+  <VStack>
+  <Heading sx={{"fontSize": ["1.3rem", "1.85rem", "2.6rem", "3.25rem", "3.25rem"], "fontWeight": "900", "_dark": {"background": "linear-gradient(to right, #e1e1e1, #757575)", "backgroundClip": "text"}, "backgroundImage": "url('landscape.jpg')", "backgroundSize": "cover"}}>
+  {`Hello there! I'm Owen. My passions lie in in the agricultural world and sustainable living. Growing up in Nebraskan farm country, I understand the need for changing our agricultural practices and lifestlyes in order to better our planet. I recently changed to software engineering in order to maximize my skills and problem solving abilities for the better! `}
+</Heading>
 </VStack>
+  <Box sx={{"width": "100%", "height": "40vh"}}/>
+  <VStack>
+  <Heading sx={{"fontSize": ["1.3rem", "1.85rem", "2.6rem", "3.25rem", "3.25rem"], "fontWeight": "900", "_dark": {"background": "linear-gradient(to right, #e1e1e1, #757575)", "backgroundClip": "text"}}}>
+  {`Hello there! I'm Owen. My passions lie in in the agricultural world and sustainable living. Growing up in Nebraskan farm country, I understand the need for changing our agricultural practices and lifestlyes in order to better our planet. I recently changed to software engineering in order to maximize my skills and problem solving abilities for the better! `}
+</Heading>
+</VStack>
+</Stack>
   <NextHead>
   <title>
   {`Reflex App`}

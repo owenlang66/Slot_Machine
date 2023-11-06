@@ -73,7 +73,7 @@ class Header:
                         rx.text("owenlang66@gmail.com", _dark={"color": "rgba(255,255,255,0.5)"})
                 ),
             align_items="center",
-            justify_content="space-between",
+            justify_content="center",
         )
         self.theme: rx.Component = rx.color_mode_button(
             rx.color_mode_icon(),
@@ -92,8 +92,7 @@ class Header:
 
 class Main:
     def __init__(self):
-        self.box: rx.Box = rx.box(width="100%")
-
+        self.box: rx.Box = rx.box(width="100%", height="40vh")
         self.name: rx.Vstack = rx.vstack(
             rx.heading(
                 "Hi there! I'm Owen the former farmer",
@@ -105,15 +104,15 @@ class Main:
                 },
             ),
             rx.heading("🍃", size="2xl", style=wave),
-            spacing="1.75rem",
+            spacing="1rem",
             align_items="center",
             justify_content="center",
         )
 
 
         self.badge_stack_max: rx.Hstack = rx.hstack(spacing="1rem")
-        self.badge_stack_min: rx.Vstack = rx.vstack(spacing="1.25rem")
-        titles: list = ["Software Engineer", "Designer", "Full Stack Developer"]
+        self.badge_stack_min: rx.Vstack = rx.vstack(spacing="3rem")
+        titles: list = ["Software Engineer", "Designer", "Full Stack Developer", "Former Farmer"]
         self.badge_stack_max.children = [self.create_badges(title) for title in titles]
         self.badge_stack_min.children = [self.create_badges(title) for title in titles]
 
@@ -126,6 +125,9 @@ class Main:
         self.crumbs.children = [
             self.create_breadcrumb_item(path, title, url) for path, title, url in data
         ]
+
+        self.bio_page = BioPage()
+        # self.projects_page = ProjectsPage()
  
 
     # method: create social links
@@ -181,14 +183,72 @@ class Main:
         return self.box
 
 
+class Bio:
+    def __init__(self):
+        self.box: rx.Box = rx.box(width="100%", height="40vh")
+        self.name: rx.Vstack = rx.vstack(
+            rx.heading(
+                "Hello there! I'm Owen. My passions lie in in the agricultural world and sustainable living. Growing up in Nebraskan farm country, I understand the need for changing our agricultural practices and lifestlyes in order to better our planet. I recently changed to software engineering in order to maximize my skills and problem solving abilities for the better! ",
+                font_size=["1.3rem", "1.85rem", "2.6rem", "3.25rem", "3.25rem"],
+                font_weight="900", 
+                _dark={
+                    "background": "linear-gradient(to right, #e1e1e1, #757575)",
+                    "background_clip": "text",
+                },
+                background_image="url('landscape.jpg')",
+                background_size="cover",
+            ),
+        )
+
+        
+    def build(self):
+        return [self.box, self.name]
+        
+class BioPage:    
+    def __init__(self):
+        self.bio = Bio()
+
+    def build(self):
+        return self.bio.build() 
+
+class Projects:
+    def __init__(self):
+        self.box: rx.Box = rx.box(width="100%", height="40vh")
+        self.name: rx.Vstack = rx.vstack(
+            rx.heading(
+                "Hello there! I'm Owen. My passions lie in in the agricultural world and sustainable living. Growing up in Nebraskan farm country, I understand the need for changing our agricultural practices and lifestlyes in order to better our planet. I recently changed to software engineering in order to maximize my skills and problem solving abilities for the better! ",
+                font_size=["1.3rem", "1.85rem", "2.6rem", "3.25rem", "3.25rem"],
+                font_weight="900", 
+                _dark={
+                    "background": "linear-gradient(to right, #e1e1e1, #757575)",
+                    "background_clip": "text",
+                },
+            ),
+        )
+    def build(self):
+        return [self.box, self.name]
+
+
+class ProjectsPage:
+    def __init__(self):
+        self.projects = Projects()
+
+    def build(self):
+        return self.projects.build()
+
+
 @rx.page(route="/")
 def landing() -> rx.Component:
-    header: object = Header().build()
-    main: object = Main().build()
+    header = Header().build()
+    main = Main().build()
+    bio = BioPage().build()
+    projects = ProjectsPage().build()
 
-    return rx.vstack(
+    return rx.stack(
         header,
         main,
+        *bio,
+        *projects,
 
         # background 
         _light={
