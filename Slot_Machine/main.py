@@ -96,7 +96,7 @@ def get_lines():
                 print("Enter valid number")
         else: 
             print("Please enter a number")
-
+ 
     return lines
 
 def get_bet():
