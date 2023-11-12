@@ -98,7 +98,7 @@ def get_lines():
             print("Please enter a number")
  
     return lines
-
+ 
 def get_bet():
     while True:
         amt = input("What would you like to bet on each line? $")
