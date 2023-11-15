@@ -76,7 +76,7 @@ class Header:
             justify_content="center",
         )
         self.theme: rx.Component = rx.color_mode_button(
-            rx.color_mode_icon(),
+            rx.color_mode_icon(), 
             color_scheme="none",
             _light={"color": "black"},
             _dark={"color": "white"},
